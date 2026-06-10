@@ -3,24 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Muhammad Hasnain — Full-Stack MERN & Next.js Developer</title>
 <meta name="description" content="MERN & Next.js developer in Sargodha, Pakistan building production-grade full-stack web apps, SaaS platforms, and AI products. React, Node.js, MongoDB, Next.js.">
 <meta name="keywords" content="MERN Stack Developer Pakistan, Next.js Developer, Full Stack Developer Sargodha, React Developer, Node MongoDB Developer, Muhammad Hasnain">
 <meta name="author" content="Muhammad Hasnain">
 <meta name="robots" content="index, follow">
-
 <meta property="og:type" content="website">
 <meta property="og:title" content="Muhammad Hasnain — Full-Stack MERN & Next.js Developer">
 <meta property="og:description" content="Production-grade full-stack web apps, SaaS platforms, and AI products.">
 <meta property="og:locale" content="en_US">
-
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Muhammad Hasnain — Full-Stack MERN Developer">
 <meta name="twitter:description" content="Production-grade full-stack web apps, SaaS platforms, and AI products.">
-
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230ea5e9'/><text x='50' y='68' font-size='52' font-family='Arial,sans-serif' font-weight='700' fill='white' text-anchor='middle'>MH</text></svg>">
-
 <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -35,8 +30,6 @@ const {
   useRef,
   useCallback
 } = React;
-
-// ---- Bundled icon set (no external CDN) ----
 const _ICON_DATA = {
   "Mail": [["path", {
     "d": "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"
@@ -535,10 +528,10 @@ const SKILLS = {
   "APIs & DevOps": ["Groq AI", "OpenAI", "Cloudinary", "Git / GitHub", "Vercel", "Postman"]
 };
 const TIMELINE = [{
-  role: "Full Stack Web Development Intern",
-  org: "Teyzix Core Pvt. Ltd.",
-  time: "May 2026",
-  note: "Internship building production full-stack features."
+  role: "Freelance Full-Stack Developer",
+  org: "Fiverr & Upwork",
+  time: "Jan 2025 – Present",
+  note: "Designing, building, and deploying full-stack MERN web apps for clients — from requirements to live deployment."
 }, {
   role: "MERN Stack Development",
   org: "PNY Trainings, Sargodha",
@@ -551,25 +544,21 @@ const TIMELINE = [{
   note: "Undergraduate degree."
 }];
 const CERTS = [{
-  name: "Problem Solving (Intermediate)",
-  issuer: "HackerRank",
-  year: "2026",
-  id: "480EF0C5F1F5"
+  name: "Full-Stack Delivery",
+  issuer: "From data model to deployed UI",
+  icon: "Layers"
 }, {
-  name: "JavaScript (Intermediate)",
-  issuer: "HackerRank",
-  year: "2026",
-  id: "2F2A6F0F421B"
+  name: "Production Deployment",
+  issuer: "Vercel, CORS, live demos",
+  icon: "Rocket"
 }, {
-  name: "React (Basic)",
-  issuer: "HackerRank",
-  year: "2026",
-  id: "386A114904CD"
+  name: "Secure Auth & APIs",
+  issuer: "JWT, REST, role-based access",
+  icon: "Server"
 }, {
-  name: "Full Stack Web Dev Internship",
-  issuer: "Teyzix Core Pvt. Ltd.",
-  year: "2026",
-  id: null
+  name: "AI Integration",
+  issuer: "Groq & OpenAI in real flows",
+  icon: "Cpu"
 }];
 const TESTIMONIALS = [{
   quote: "Hasnain took our hospital management brief and shipped a real, working SaaS with every role accounted for. He thinks in systems, not screens.",
@@ -594,6 +583,13 @@ const ICONS = {
   MessageCircle,
   Layers
 };
+const ICONS2 = {
+  Layers,
+  Rocket,
+  Server,
+  Cpu
+};
+const BARCODE = [3, 1, 2, 4, 1, 2, 1, 3, 2, 1, 4, 1, 2, 2, 1, 3, 1, 2, 4, 1, 1, 2, 3, 1, 2, 1, 4, 2, 1, 3, 2, 1, 2, 4, 1, 2, 1, 3, 1, 2, 2, 1, 4, 1, 2, 3, 1, 2].map(n => `${n}px`);
 
 // ---- HOOKS ------------------------------------------------------------
 function useInView(threshold = 0.2) {
@@ -651,7 +647,9 @@ function Reveal({
     style: {
       opacity: seen ? 1 : 0,
       transform: seen ? "translateY(0)" : "translateY(24px)",
-      transition: `opacity .7s cubic-bezier(.16,1,.3,1) ${delay}ms, transform .7s cubic-bezier(.16,1,.3,1) ${delay}ms`
+      transition: `opacity .7s cubic-bezier(.16,1,.3,1) ${delay}ms, transform .7s cubic-bezier(.16,1,.3,1) ${delay}ms`,
+      willChange: seen ? "auto" : "opacity, transform",
+      backfaceVisibility: "hidden"
     }
   }, children);
 }
@@ -660,7 +658,12 @@ function TiltCard({
   className = ""
 }) {
   const ref = useRef(null);
+  const fine = useRef(true);
+  useEffect(() => {
+    fine.current = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+  }, []);
   const onMove = e => {
+    if (!fine.current) return;
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -675,10 +678,9 @@ function TiltCard({
     ref: ref,
     onMouseMove: onMove,
     onMouseLeave: reset,
-    className: className,
+    className: `tilt-fix ${className}`,
     style: {
-      transition: "transform .4s cubic-bezier(.16,1,.3,1)",
-      willChange: "transform"
+      transition: "transform .4s cubic-bezier(.16,1,.3,1)"
     }
   }, children);
 }
@@ -942,14 +944,56 @@ function App() {
   }), " ", PROFILE.location)))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 200
   }, /*#__PURE__*/React.createElement("div", {
-    className: "relative mx-auto w-full max-w-[320px]"
+    className: "relative mx-auto w-full max-w-[330px]"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "absolute -inset-3 rounded-[2rem] blur-2xl opacity-50",
+    className: "absolute -inset-4 rounded-[2rem] blur-3xl opacity-40 idcard-glow",
     style: {
       background: "linear-gradient(135deg,#38bdf8,#0ea5e9)"
     }
   }), /*#__PURE__*/React.createElement("div", {
-    className: "relative rounded-[1.7rem] p-1.5",
+    className: "absolute left-1/2 -top-8 -translate-x-1/2 flex flex-col items-center z-10"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "w-1.5 h-7 rounded-full",
+    style: {
+      background: "linear-gradient(#38bdf8,#0ea5e9)"
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "w-9 h-3 rounded-md -mt-0.5",
+    style: {
+      background: t.cardBg,
+      border: `1px solid ${t.border}`
+    }
+  })), /*#__PURE__*/React.createElement(TiltCard, null, /*#__PURE__*/React.createElement("div", {
+    className: "relative rounded-[1.6rem] overflow-hidden idcard",
+    style: {
+      background: t.cardBg,
+      border: `1px solid ${t.border}`,
+      boxShadow: "0 30px 60px -20px rgba(14,165,233,.35)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "h-1.5 w-full",
+    style: {
+      background: "linear-gradient(90deg,#38bdf8,#0ea5e9)"
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "p-5"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between mb-3"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] uppercase tracking-[0.25em] font-display font-semibold",
+    style: {
+      color: "#0ea5e9"
+    }
+  }, "Developer ID"), /*#__PURE__*/React.createElement("span", {
+    className: "flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full",
+    style: {
+      background: "rgba(16,185,129,.14)",
+      color: "#10b981"
+    }
+  }, /*#__PURE__*/React.createElement(Check, {
+    size: 10
+  }), " Verified")), /*#__PURE__*/React.createElement("div", {
+    className: "relative rounded-2xl p-1",
     style: {
       background: "linear-gradient(135deg,#38bdf8,#0ea5e9)"
     }
@@ -957,21 +1001,61 @@ function App() {
     src: IMG.profile,
     alt: "Portrait of Muhammad Hasnain, MERN stack developer",
     loading: "lazy",
-    className: "rounded-[1.4rem] w-full object-cover"
+    className: "rounded-[0.95rem] w-full object-cover idcard-photo"
   })), /*#__PURE__*/React.createElement("div", {
-    className: "absolute -bottom-4 -left-4 px-4 py-3 rounded-2xl backdrop-blur-md",
+    className: "mt-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "font-display font-bold text-lg leading-tight"
+  }, "Muhammad Hasnain"), /*#__PURE__*/React.createElement("div", {
+    className: "text-xs mt-0.5",
     style: {
-      background: t.cardBg,
+      color: "#0ea5e9"
+    }
+  }, "MERN Stack Developer")), /*#__PURE__*/React.createElement("div", {
+    className: "mt-3 grid grid-cols-2 gap-2 text-[11px]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "rounded-lg px-2.5 py-1.5",
+    style: {
+      background: t.chip,
       border: `1px solid ${t.border}`
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "text-xs",
     style: {
       color: t.dim
     }
-  }, "Based in"), /*#__PURE__*/React.createElement("div", {
-    className: "font-display font-semibold text-sm"
-  }, "Sargodha, PK")))))), /*#__PURE__*/React.createElement("section", {
+  }, "Location"), /*#__PURE__*/React.createElement("div", {
+    className: "font-medium"
+  }, "Sargodha, PK")), /*#__PURE__*/React.createElement("div", {
+    className: "rounded-lg px-2.5 py-1.5",
+    style: {
+      background: t.chip,
+      border: `1px solid ${t.border}`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: t.dim
+    }
+  }, "Status"), /*#__PURE__*/React.createElement("div", {
+    className: "font-medium flex items-center gap-1"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"
+  }), " Open"))), /*#__PURE__*/React.createElement("div", {
+    className: "mt-4 flex items-end gap-[2px] h-7",
+    "aria-hidden": "true"
+  }, BARCODE.map((w, i) => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    className: "inline-block h-full",
+    style: {
+      width: w,
+      background: i % 2 ? "transparent" : t === T.dark ? "#cbd5e1" : "#334155",
+      opacity: i % 3 ? 0.9 : 0.5
+    }
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "text-[9px] mt-1 font-mono tracking-wider",
+    style: {
+      color: t.dim
+    }
+  }, "MH \xB7 MERN \xB7 ", new Date().getFullYear(), " \xB7 PAKISTAN")))))))), /*#__PURE__*/React.createElement("section", {
     ref: statsRef,
     className: "px-5 -mt-4"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1206,33 +1290,34 @@ function App() {
     style: {
       color: t.dim
     }
-  }, "I'm a MERN-stack developer based in Sargodha. What drives me is shipping things people actually use \u2014 every project in my portfolio is live and deployed, not a tutorial clone. I went from a B.A. to professional MERN training to building a full hospital-management SaaS, and I'm aiming squarely at a senior full-stack role."), /*#__PURE__*/React.createElement("div", {
+  }, "I'm a MERN-stack developer based in Sargodha. What drives me is shipping things people actually use \u2014 every project in my portfolio is live and deployed, not a tutorial clone. I went from a B.A. to professional MERN training to building a full hospital-management SaaS, and today I work with clients on Fiverr and Upwork delivering full-stack web apps end to end."), /*#__PURE__*/React.createElement("div", {
     className: "mt-6 grid grid-cols-2 gap-3"
-  }, CERTS.map(c => /*#__PURE__*/React.createElement("div", {
-    key: c.name,
-    className: "rounded-xl p-4",
-    style: {
-      background: t.cardBg,
-      border: `1px solid ${t.border}`
-    }
-  }, /*#__PURE__*/React.createElement(Award, {
-    size: 16,
-    style: {
-      color: "#0ea5e9"
-    }
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "text-sm font-medium mt-2 leading-snug"
-  }, c.name), /*#__PURE__*/React.createElement("div", {
-    className: "text-xs mt-1",
-    style: {
-      color: t.dim
-    }
-  }, c.issuer, " \xB7 ", c.year), c.id && /*#__PURE__*/React.createElement("div", {
-    className: "text-[10px] mt-1 font-mono",
-    style: {
-      color: t.dim
-    }
-  }, "ID ", c.id))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, CERTS.map(c => {
+    const Ic = ICONS2[c.icon] || Award;
+    return /*#__PURE__*/React.createElement("div", {
+      key: c.name,
+      className: "rounded-xl p-4 transition-all duration-300 hover:-translate-y-1",
+      style: {
+        background: t.cardBg,
+        border: `1px solid ${t.border}`
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "w-9 h-9 rounded-lg grid place-items-center mb-2",
+      style: {
+        background: "linear-gradient(135deg,rgba(56,189,248,.18),rgba(14,165,233,.18))",
+        color: "#0ea5e9"
+      }
+    }, /*#__PURE__*/React.createElement(Ic, {
+      size: 16
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "text-sm font-medium leading-snug"
+    }, c.name), /*#__PURE__*/React.createElement("div", {
+      className: "text-xs mt-1",
+      style: {
+        color: t.dim
+      }
+    }, c.issuer));
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2 mb-6 text-sm font-display font-semibold"
   }, /*#__PURE__*/React.createElement(Briefcase, {
     size: 16,
@@ -1786,11 +1871,30 @@ html { scroll-behavior: smooth; }
 .modal-in > div { animation: pop .3s cubic-bezier(.16,1,.3,1); }
 @keyframes fade { from { opacity: 0; } }
 @keyframes pop { from { opacity: 0; transform: translateY(20px) scale(.97); } }
+
+/* ID card */
+.idcard { animation: floaty 6s ease-in-out infinite; transform-style: preserve-3d; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.idcard-glow { animation: pulseglow 5s ease-in-out infinite; }
+@keyframes pulseglow { 0%,100% { opacity: .3; } 50% { opacity: .55; } }
+.idcard-photo { position: relative; }
+.idcard::after {
+  content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.18), transparent);
+  transform: skewX(-18deg); animation: shine 4.5s ease-in-out infinite; pointer-events: none;
+}
+@keyframes shine { 0%,60% { left: -60%; } 85%,100% { left: 130%; } }
+
+/* GPU hints — prevent mobile repaint glitches on cards */
+.tilt-fix, .idcard, .hero-glow { -webkit-transform: translateZ(0); transform: translateZ(0); }
+
 :focus-visible { outline: 2px solid #38bdf8; outline-offset: 2px; }
 ::selection { background: rgba(14,165,233,.28); }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   html { scroll-behavior: auto; }
+  .idcard, .idcard-glow { animation: none; }
+  .idcard::after { display: none; }
 }
 input::placeholder, textarea::placeholder { color: inherit; opacity: .5; }
 select option { background: #101826; color: #f1f0fb; }
