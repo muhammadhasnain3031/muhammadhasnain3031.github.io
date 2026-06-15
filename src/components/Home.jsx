@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-// High-End Zero-Dependency Custom SVGs for Production
+// Premium Zero-Dependency Custom SVGs for Production
 const IconDownload = () => (
   <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -34,7 +34,7 @@ const IconMail = () => (
 );
 
 export default function Home() {
-  // Advanced Engineering Micro-Interaction Orchestration
+  // Advanced Orchestration Animations
   const pageContainer = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.05 } }
@@ -53,6 +53,31 @@ export default function Home() {
     { label: "Full Development Lifecycle", val: "End-To-End" }
   ];
 
+  // Professional Timeline Data combining Experience & Education from CV
+  const journeyTimeline = [
+    {
+      type: "experience",
+      title: "Freelance Full-Stack Developer",
+      organization: "Fiverr & Upwork",
+      duration: "Jan 2025 - Present",
+      description: "Designing, building, and deploying production-grade MERN stack applications for global clients. Specializing in secure dashboards, JWT authentication, and full-stack product lifecycles."
+    },
+    {
+      type: "training",
+      title: "MERN Stack Development Certification",
+      organization: "PNY Trainings, Sargodha",
+      duration: "2025 - 2026",
+      description: "Rigorous professional training program specializing in MongoDB, Express.js, React, Node.js, enterprise REST APIs, and deployment pipelines."
+    },
+    {
+      type: "education",
+      title: "Bachelor of Arts (B.A.)",
+      organization: "University of Sargodha",
+      duration: "Graduated 2021",
+      description: "Formal graduation degree establishing solid critical thinking, academic research foundation, and analytical engineering capabilities."
+    }
+  ];
+
   return (
     <motion.div 
       variants={pageContainer}
@@ -62,7 +87,7 @@ export default function Home() {
     >
       {/* Visual Ambient Grid & Blur Systems */}
       <div className="absolute top-[-8%] right-[-5%] w-[280px] md:w-[600px] h-[280px] md:h-[600px] bg-gradient-to-bl from-sky-200/40 to-transparent blur-3xl rounded-full pointer-events-none z-0" />
-      <div className="absolute bottom-[15%] left-[-8%] w-[220px] md:w-[500px] h-[220px] md:h-[500px] bg-gradient-to-tr from-blue-100/30 to-transparent blur-3xl rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-[25%] left-[-8%] w-[220px] md:w-[500px] h-[220px] md:h-[500px] bg-gradient-to-tr from-blue-100/30 to-transparent blur-3xl rounded-full pointer-events-none z-0" />
 
       {/* Hero Execution Area */}
       <section className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
@@ -94,7 +119,7 @@ export default function Home() {
           
           {/* Professional Summary Parsed from CV */}
           <p className="text-sm sm:text-base md:text-lg text-[#64748b] leading-relaxed max-w-xl font-medium">
-            Hands-on engineer specializing in designing, building, and deploying production-grade full-stack web architectures. Experience spans across multi-tenant hospital SaaS configurations, real-time WebRTC infrastructure, and custom micro-inference AI system models.
+            Hands-on engineer specializing in designing, building, and deploying production-grade full-stack web architectures[cite: 5, 8]. Experience spans across multi-tenant hospital SaaS configurations, real-time WebRTC infrastructure, and custom micro-inference AI system models[cite: 6, 14, 16].
           </p>
 
           {/* Interactive Call-To-Actions Row (Responsive Multi-Layout) */}
@@ -107,7 +132,7 @@ export default function Home() {
               <IconArrowRight />
             </Link>
             
-            {/* Absolute Dynamic CV Download Button - Looks Clean & High-End */}
+            {/* Absolute Dynamic CV Download Button */}
             <a 
               href="/Muhammad_Hasnain_CV.pdf" 
               download="Muhammad_Hasnain_CV.pdf"
@@ -124,7 +149,6 @@ export default function Home() {
           variants={fadeUpSkew} 
           className="lg:col-span-5 flex justify-center lg:justify-end w-full relative group"
         >
-          {/* Mathematical Fluid Geometry Wrapper */}
           <div className="w-full max-w-[270px] sm:max-w-[330px] aspect-[4/5] bg-white p-3 sm:p-4 rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl rotate-2 group-hover:rotate-0 transition-all duration-500 border border-slate-100 relative z-10">
             <div className="w-full h-full rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden bg-slate-50 relative">
               <img 
@@ -142,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* Production Analytics Dashboard Metrics Grid */}
-      <section className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 py-16 sm:py-24 relative z-10">
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 py-12 sm:py-16 relative z-10">
         <motion.div variants={fadeUpSkew} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {executiveMetrics.map((item, i) => (
             <div 
@@ -160,12 +184,63 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* NEW SECTION: Premium Architectural Journey (Experience & Education Timeline) */}
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 py-12 sm:py-20 relative z-10 border-t border-slate-200/60">
+        <motion.div variants={fadeUpSkew} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          {/* Section Heading Label - Occupies 4 Columns */}
+          <div className="lg:col-span-4 space-y-3">
+            <div className="text-[10px] sm:text-[11px] text-[#185FA5] font-black uppercase tracking-widest">
+              Background & Verification
+            </div>
+            <h3 className="text-2xl sm:text-4xl font-black text-[#0f172a] tracking-tight">
+              Professional <br className="hidden lg:block"/> Journey.
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 font-medium max-w-sm leading-relaxed">
+              A comprehensive history detailing professional technical training, freelance execution, and structural academic compliance[cite: 29, 30, 31, 35, 36, 37, 39, 40].
+            </p>
+          </div>
+
+          {/* Interactive Timeline Core Node - Occupies 8 Columns */}
+          <div className="lg:col-span-8 relative border-l-2 border-slate-200/80 ml-2 sm:ml-4 pl-6 sm:pl-8 space-y-10">
+            {journeyTimeline.map((item, index) => (
+              <div key={index} className="relative group">
+                
+                {/* Timeline Node Ring Visual Cue */}
+                <div className="absolute left-[-31px] sm:left-[-39px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-[#185FA5] group-hover:bg-[#185FA5] transition-all duration-300 shadow-xs" />
+                
+                {/* Timeline Card Data Container */}
+                <div className="space-y-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4">
+                    <h4 className="text-base sm:text-lg font-black text-[#0f172a] tracking-tight group-hover:text-[#185FA5] transition-colors">
+                      {item.title}
+                    </h4>
+                    <span className="text-[10px] sm:text-[11px] font-black text-[#185FA5] bg-[#E6F1FB] border border-sky-100/60 px-2.5 py-1 rounded-md tracking-wide shrink-0 w-max">
+                      {item.duration}
+                    </span>
+                  </div>
+                  
+                  <p className="text-xs sm:text-sm font-bold text-slate-600">
+                    {item.organization}
+                  </p>
+                  
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium max-w-2xl">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </motion.div>
+      </section>
+
       {/* Corporate Technical Footer Infrastructure */}
       <footer className="border-t border-[#e2e8f0] bg-white/70 backdrop-blur-md relative z-10">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 md:px-12 py-12 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <div>
             <h4 className="text-xl font-black text-[#0f172a]">Muhammad Hasnain</h4>
-            <p className="text-xs sm:text-sm text-slate-500 font-semibold mt-0.5">Sargodha, Punjab, Pakistan | +92 300 0253031</p>
+            <p className="text-xs sm:text-sm text-slate-500 font-semibold mt-0.5">Sargodha, Punjab, Pakistan | +92 300 0253031 [cite: 2]</p>
           </div>
           
           {/* Connected Developer Network Nodes */}
@@ -196,7 +271,7 @@ export default function Home() {
               <span>Email</span>
             </a>
             <span className="text-[#185FA5] bg-[#E6F1FB] border border-sky-100/50 px-3 py-1 rounded-lg text-[11px] font-black tracking-wide shrink-0">
-              Sargodha, PK
+              Sargodha, PK [cite: 2]
             </span>
           </div>
         </div>
