@@ -20,43 +20,41 @@ export default function Services() {
     { title: "Figma to React / Next.js", description: "Converting high-fidelity UI prototypes into interactive, optimized, pixel-perfect production codebases.", icon: <IconFigma />, tag: "Design To Code", features: ["Pixel-Perfect Translation", "Atomic Reusable Components", "Fluid Micro-Animations", "Accessible Semantic DOM"] },
   ];
 
-  const container = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
+  const container = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.4 } } };
   const cardReveal = { hidden: { opacity: 0, y: 35 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } } };
 
   return (
-    <PageWrapper className="min-h-screen bg-[#f8fafc] pt-36 pb-24 px-6 md:px-12 flex flex-col items-center font-sans overflow-hidden selection:bg-[#185FA5] selection:text-white">
-      <motion.div initial={{ opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mb-20">
-        <div className="inline-flex items-center text-[11px] font-extrabold tracking-widest uppercase text-[#d4af37] bg-[#0a0f1e] border border-white/10 rounded-full px-5 py-2.5 mb-6 shadow-sm">
-          What I Offer
-        </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-[#0a0f1e] leading-tight tracking-tight mb-6">
+    <PageWrapper className="min-h-screen bg-gradient-to-b from-[#0b1437] via-[#0a1230] to-[#070b1f] pt-36 pb-24 px-6 md:px-12 flex flex-col items-center font-sans overflow-hidden selection:bg-cyan-500 selection:text-white relative">
+      {/* ambient orbs */}
+      <div className="absolute top-[5%] right-[8%] w-[400px] h-[400px] bg-cyan-500/15 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px] bg-[#2563eb]/15 blur-3xl rounded-full pointer-events-none" />
+
+      <motion.div initial={{ opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }} className="text-center max-w-3xl mb-20 relative z-10">
+        <div className="inline-flex items-center text-[11px] font-extrabold tracking-widest uppercase text-[#f5d061] bg-white/5 border border-cyan-300/20 rounded-full px-5 py-2.5 mb-6">What I Offer</div>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
           Premium Services for <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#185FA5] to-[#d4af37]">Modern Tech Solutions.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-[#f5d061]">Modern Tech Solutions.</span>
         </h1>
-        <p className="text-[#64748b] text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
-          I design, architect, and deploy robust full-stack applications with elegant visual layouts and pristine execution.
-        </p>
+        <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium">I design, architect, and deploy robust full-stack applications with elegant visual layouts and pristine execution.</p>
       </motion.div>
 
-      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl">
+      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl relative z-10">
         {servicesList.map((service, index) => (
-          <motion.div key={index} variants={cardReveal} whileHover={{ y: -6, scale: 1.015 }} className="group bg-white border border-[#e2e8f0] p-8 rounded-[2.5rem] shadow-[0_4px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_22px_50px_rgba(24,95,165,0.08)] hover:border-[#d4af37]/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#f5d061]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tr-[2.5rem]" />
+          <motion.div key={index} variants={cardReveal} whileHover={{ y: -6, scale: 1.015 }} className="group bg-[#0b1437]/80 backdrop-blur border border-cyan-300/15 p-8 rounded-[2.5rem] hover:border-[#f5d061]/40 hover:shadow-[0_22px_50px_rgba(34,211,238,0.1)] transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tr-[2.5rem]" />
             <div>
               <div className="flex items-center justify-between mb-8 relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-[#E6F1FB] text-[#185FA5] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#185FA5] group-hover:text-white transition-all duration-300 shadow-sm">
-                  {service.icon}
-                </div>
-                <span className="text-[10px] font-black tracking-wider text-[#185FA5] bg-sky-50/80 px-3.5 py-1.5 rounded-xl border border-sky-100/50 uppercase">{service.tag}</span>
+                <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-[#2563eb] group-hover:text-white transition-all duration-300 border border-cyan-300/20">{service.icon}</div>
+                <span className="text-[10px] font-black tracking-wider text-cyan-300 bg-cyan-500/10 px-3.5 py-1.5 rounded-xl border border-cyan-300/20 uppercase">{service.tag}</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-black text-[#0a0f1e] mb-3 group-hover:text-[#185FA5] transition-colors duration-200">{service.title}</h3>
-              <p className="text-[#64748b] text-sm leading-relaxed mb-6 font-medium">{service.description}</p>
-              <div className="border-t border-slate-100/70 pt-5 mt-5">
+              <h3 className="text-xl md:text-2xl font-black text-white mb-3 group-hover:text-cyan-400 transition-colors duration-200">{service.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6 font-medium">{service.description}</p>
+              <div className="border-t border-cyan-300/10 pt-5 mt-5">
                 <ul className="space-y-3">
                   {service.features.map((feature, fi) => (
-                    <li key={fi} className="flex items-start text-xs font-bold text-slate-600">
-                      <span className="flex-shrink-0 w-5 h-5 rounded-lg bg-sky-50 flex items-center justify-center mr-3 border border-sky-100/40 mt-0.5">
-                        <svg className="w-2.5 h-2.5 text-[#185FA5]" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    <li key={fi} className="flex items-start text-xs font-bold text-slate-300">
+                      <span className="flex-shrink-0 w-5 h-5 rounded-lg bg-cyan-500/10 flex items-center justify-center mr-3 border border-cyan-300/20 mt-0.5">
+                        <svg className="w-2.5 h-2.5 text-cyan-400" fill="none" stroke="currentColor" strokeWidth="3.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
                       </span>
                       <span className="leading-tight">{feature}</span>
                     </li>
@@ -69,10 +67,8 @@ export default function Services() {
       </motion.div>
 
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-20 text-center relative z-10">
-        <p className="text-sm text-slate-500 font-bold tracking-wide mb-5 uppercase">Have a custom architectural requirement?</p>
-        <Link to="/Contact" className="inline-flex items-center justify-center px-10 py-5 bg-[#185FA5] hover:bg-[#0c447c] text-white font-black text-sm rounded-2xl transition-all hover:scale-[1.03] shadow-lg shadow-[#185FA5]/20">
-          Let's Architect A Custom Solution
-        </Link>
+        <p className="text-sm text-slate-400 font-bold tracking-wide mb-5 uppercase">Have a custom architectural requirement?</p>
+        <Link to="/Contact" className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-[#2563eb] to-cyan-500 hover:from-[#1d4ed8] hover:to-cyan-400 text-white font-black text-sm rounded-2xl transition-all hover:scale-[1.03] shadow-lg shadow-cyan-500/30">Let's Architect A Custom Solution</Link>
       </motion.div>
     </PageWrapper>
   );

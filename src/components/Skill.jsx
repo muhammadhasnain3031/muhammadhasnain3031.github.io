@@ -19,45 +19,44 @@ export default function Skill() {
     { category: "Problem Solving", description: "Applying deep programmatic structures and algorithmic efficiency patterns.", icon: <IconLogic />, skills: [{ name: "Data Structures", level: "Advanced" }, { name: "Algorithm Design", level: "Advanced" }, { name: "System Design", level: "Expert" }, { name: "Performance Audits", level: "Expert" }] },
   ];
 
-  const container = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
+  const container = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.4 } } };
   const cardReveal = { hidden: { opacity: 0, y: 35 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } } };
 
+  const levelStyle = (level) => level === "Expert" ? "bg-emerald-500/15 text-emerald-300 border border-emerald-400/20" : level === "Advanced" ? "bg-cyan-500/15 text-cyan-300 border border-cyan-400/20" : "bg-[#f5d061]/15 text-[#f5d061] border border-[#f5d061]/20";
+
   return (
-    <PageWrapper className="min-h-screen bg-[#f8fafc] pt-36 pb-24 px-6 md:px-12 flex flex-col items-center font-sans overflow-hidden selection:bg-[#185FA5] selection:text-white">
-      <motion.div initial={{ opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mb-20">
-        <div className="inline-flex items-center text-[11px] font-extrabold tracking-widest uppercase text-[#d4af37] bg-[#0a0f1e] border border-white/10 rounded-full px-5 py-2.5 mb-6 shadow-sm">
-          My Technical Arsenal
-        </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-[#0a0f1e] leading-tight tracking-tight mb-6">
+    <PageWrapper className="min-h-screen bg-gradient-to-b from-[#0b1437] via-[#0a1230] to-[#070b1f] pt-36 pb-24 px-6 md:px-12 flex flex-col items-center font-sans overflow-hidden selection:bg-cyan-500 selection:text-white relative">
+      <div className="absolute top-[5%] left-[8%] w-[400px] h-[400px] bg-cyan-500/15 blur-3xl rounded-full pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[5%] w-[350px] h-[350px] bg-[#2563eb]/15 blur-3xl rounded-full pointer-events-none" />
+
+      <motion.div initial={{ opacity: 0, y: -25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45 }} className="text-center max-w-3xl mb-20 relative z-10">
+        <div className="inline-flex items-center text-[11px] font-extrabold tracking-widest uppercase text-[#f5d061] bg-white/5 border border-cyan-300/20 rounded-full px-5 py-2.5 mb-6">My Technical Arsenal</div>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
           Tech Stack & <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#185FA5] to-[#d4af37]">Expertise Capabilities.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-[#f5d061]">Expertise Capabilities.</span>
         </h1>
-        <p className="text-[#64748b] text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
-          A comprehensive engineering map of frameworks, custom design implementations, and runtime diagnostics.
-        </p>
+        <p className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium">A comprehensive engineering map of frameworks, custom design implementations, and runtime diagnostics.</p>
       </motion.div>
 
-      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl">
+      <motion.div variants={container} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl relative z-10">
         {skillCategories.map((cat, index) => (
-          <motion.div key={index} variants={cardReveal} whileHover={{ y: -6, scale: 1.015 }} className="group bg-white border border-[#e2e8f0] p-8 rounded-[2.5rem] shadow-[0_4px_30px_rgba(0,0,0,0.01)] hover:shadow-[0_22px_50px_rgba(24,95,165,0.08)] hover:border-[#d4af37]/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#f5d061]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tr-[2.5rem]" />
+          <motion.div key={index} variants={cardReveal} whileHover={{ y: -6, scale: 1.015 }} className="group bg-[#0b1437]/80 backdrop-blur border border-cyan-300/15 p-8 rounded-[2.5rem] hover:border-[#f5d061]/40 hover:shadow-[0_22px_50px_rgba(34,211,238,0.1)] transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tr-[2.5rem]" />
             <div>
               <div className="flex items-center justify-between mb-6 relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-[#E6F1FB] text-[#185FA5] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#185FA5] group-hover:text-white transition-all duration-300 shadow-sm">
-                  {cat.icon}
-                </div>
+                <div className="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-[#2563eb] group-hover:text-white transition-all duration-300 border border-cyan-300/20">{cat.icon}</div>
               </div>
-              <h3 className="text-xl font-black text-[#0a0f1e] mb-2 group-hover:text-[#185FA5] transition-colors duration-200">{cat.category}</h3>
-              <p className="text-slate-500 text-xs md:text-sm leading-relaxed mb-6 font-medium">{cat.description}</p>
-              <div className="h-[1px] bg-slate-100/80 mb-6"></div>
+              <h3 className="text-xl font-black text-white mb-2 group-hover:text-cyan-400 transition-colors duration-200">{cat.category}</h3>
+              <p className="text-slate-400 text-xs md:text-sm leading-relaxed mb-6 font-medium">{cat.description}</p>
+              <div className="h-[1px] bg-cyan-300/10 mb-6"></div>
               <div className="flex flex-col gap-2.5">
                 {cat.skills.map((skill, sIdx) => (
-                  <div key={sIdx} className="group/item flex items-center justify-between gap-4 px-4 py-3 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-[#E6F1FB] hover:border-sky-200 w-full transition-all duration-200">
+                  <div key={sIdx} className="group/item flex items-center justify-between gap-4 px-4 py-3 rounded-xl border border-cyan-300/10 bg-white/5 hover:bg-cyan-500/10 hover:border-cyan-300/30 w-full transition-all duration-200">
                     <div className="flex items-center">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#185FA5] mr-3 transition-transform group-hover/item:scale-125"></span>
-                      <span className="text-sm font-bold text-slate-700 group-hover/item:text-[#185FA5] transition-colors">{skill.name}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-3 transition-transform group-hover/item:scale-125"></span>
+                      <span className="text-sm font-bold text-slate-200 group-hover/item:text-cyan-300 transition-colors">{skill.name}</span>
                     </div>
-                    <span className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-1 rounded-md ${skill.level === "Expert" ? "bg-emerald-50 text-emerald-700 border border-emerald-100" : skill.level === "Advanced" ? "bg-blue-50 text-[#185FA5] border border-sky-100" : "bg-amber-50 text-amber-700 border border-amber-100"}`}>{skill.level}</span>
+                    <span className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-1 rounded-md ${levelStyle(skill.level)}`}>{skill.level}</span>
                   </div>
                 ))}
               </div>
@@ -66,9 +65,9 @@ export default function Skill() {
         ))}
       </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-20 text-center max-w-xl border-t border-slate-100 pt-10">
-        <p className="text-xs font-bold text-[#d4af37] uppercase tracking-widest mb-2">Core Philosophy</p>
-        <p className="text-sm text-slate-500 italic leading-relaxed font-medium">"Writing clean, modular code and implementing scalable system design is not just a practice — it's a commitment to efficiency."</p>
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-20 text-center max-w-xl border-t border-cyan-300/10 pt-10 relative z-10">
+        <p className="text-xs font-bold text-[#f5d061] uppercase tracking-widest mb-2">Core Philosophy</p>
+        <p className="text-sm text-slate-300 italic leading-relaxed font-medium">"Writing clean, modular code and implementing scalable system design is not just a practice — it's a commitment to efficiency."</p>
       </motion.div>
     </PageWrapper>
   );
