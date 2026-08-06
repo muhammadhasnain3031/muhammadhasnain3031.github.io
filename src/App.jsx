@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import Services from "./components/Services";
 import Skill from "./components/Skill";
 import Work from "./components/Work";
+import ChatAgent from "./components/ChatAgent";
 
 // AnimatedRoutes wraps the routes so we can animate the transition
 // between pages using AnimatePresence (needs access to location).
@@ -29,6 +30,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <AnimatedRoutes />
+      <ChatAgent />
     </BrowserRouter>
   );
 }
