@@ -30,7 +30,7 @@ export default async function handler(req, res) {
       },
       signal: controller.signal, // Controller ko attach karein
       body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
+        model: "qwen/qwen3.6-27b",
         messages: [
           { role: "system", content: system || "You are a helpful assistant." },
           ...messages,
