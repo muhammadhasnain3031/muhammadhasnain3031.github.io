@@ -37,6 +37,8 @@ export default async function handler(req, res) {
         ],
         temperature: 0.4,
         max_tokens: 300,
+        reasoning_effort: "none",
+        reasoning_format: "hidden",
       }),
     });
 
@@ -49,7 +51,12 @@ export default async function handler(req, res) {
     }
 
     const data = await groqRes.json();
-    const reply = data.choices?.[0]?.message?.content?.trim() || "";
+    let reply = data.choices?.[0]?.message?.content?.trim() || "";
+
+    // Safety net: if any raw reasoning/thinking trace slips through in the
+    // content field, strip it so only the final answer reaches the user.
+    reply = reply.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+    reply = reply.replace(/^(analysis|thinking)[\s\S]*?(?=\n\n|\bfinal\b)/i, "").trim();
 
     return res.status(200).json({ reply });
   } catch (err) {
