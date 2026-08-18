@@ -35,7 +35,7 @@ export default function Contact() {
     } catch { setStatus("error"); }
   };
 
-  const inputBase = "w-full p-3.5 bg-white/5 border rounded-xl text-sm text-white placeholder:text-slate-500 outline-none transition-all focus:ring-4 focus:bg-white/10";
+  const inputBase = "w-full p-3.5 bg-white/5 border rounded-xl sm:text-sm text-white placeholder:text-slate-500 outline-none transition-all focus:ring-4 focus:bg-white/10";
   const ok = "border-cyan-300/20 focus:border-cyan-400 focus:ring-cyan-500/20";
   const bad = "border-rose-400/60 focus:ring-rose-500/20";
 

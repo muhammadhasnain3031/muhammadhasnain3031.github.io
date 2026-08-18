@@ -86,7 +86,14 @@ export default function Home() {
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={2} className="lg:col-span-5 flex justify-center lg:justify-end w-full relative group">
             <div className="w-full max-w-[270px] sm:max-w-[330px] aspect-[4/5] bg-white/5 backdrop-blur p-3 sm:p-4 rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl rotate-2 group-hover:rotate-0 transition-all duration-500 border border-cyan-300/30 relative z-10">
               <div className="w-full h-full rounded-[1.6rem] sm:rounded-[2rem] overflow-hidden bg-slate-800 relative">
-                <img src="/profile.png" alt="Muhammad Hasnain" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"; }} />
+                <img
+  src="/profile.webp"
+  alt="Muhammad Hasnain"
+  width="660"
+  height="825"
+  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+  onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"; }}
+/>
               </div>
               <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[#f5d061] border-4 border-[#0b1437]" />
             </div>
